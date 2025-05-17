@@ -2,6 +2,9 @@ import express from "express"
 import mongoose from "mongoose"
 import cors from "cors"
 import TodoRoutes from "./Routes/TodoRoutes.js"
+import dotenv from "dotenv"
+
+dotenv.config();
 
 const app = express()
 const port = 3000
@@ -14,7 +17,7 @@ app.use("/todo", TodoRoutes)
 
 ;(  async ()=>{
 try {
-  await  mongoose.connect(process.env.MONGODB_URI)
+  await  mongoose.connect(process.env.MONGO_URI)
   console.log("MONGODB connected")
     app.on("error" , (error) =>{
         console.log(error)
